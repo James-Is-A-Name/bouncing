@@ -38,8 +38,8 @@ function setupItems(){
 
     let area = document.getElementById("displayArea");
 
-    addItem(new bounceItem(10,10, 40,40, 1,1));
-    addItem(new bounceItem(60,100, 50,50, 1,-1));
+    addItem(new bounceItem(10,10, 40,40, 1,2));
+    addItem(new bounceItem(60,100, 50,50, 2,-3));
 }
 function addItem(newItem){
 
@@ -83,17 +83,17 @@ function moveItems(){
     bounceItems.items.forEach((item) => {
 
         if(item.x > (bounceItems.width - item.width)){
-            item.xMovement = -1;
+            item.xMovement = -Math.abs(item.xMovement);
         }
         else if(item.x < 0){
-            item.xMovement = 1;
+            item.xMovement = Math.abs(item.xMovement);
         }
         
         if(item.y > (bounceItems.height - item.height)){
-            item.yMovement = -1;
+            item.yMovement = -Math.abs(item.yMovement);
         }
         else if(item.y < 0){
-            item.yMovement = 1;
+            item.yMovement = Math.abs(item.yMovement);
         }
 
         item.x += item.xMovement;
