@@ -58,6 +58,16 @@ function addItem(newItem){
     htmlElement.id = "item" + indexId;
 
     document.getElementById("displayArea").appendChild(htmlElement);
+    htmlElement.addEventListener("click",itemClicked);
+}
+
+function itemClicked(){
+    let itemIndex = event.target.value;
+
+    let item = bounceItems.items[itemIndex];
+
+    item.xMovement = -item.xMovement;
+    item.yMovement = -item.yMovement;
 }
 
 function drawItems(){
