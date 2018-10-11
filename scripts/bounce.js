@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded",startBounce);
 
 var bounceItems = {
     items : [],
-    width: 400,
-    height: 400
+    width: 800,
+    height: 800,
+
+    minItemSize: 20
 }
 
 
@@ -38,8 +40,9 @@ function setupItems(){
 
     let area = document.getElementById("displayArea");
 
-    addItem(new bounceItem(10,10, 40,40, 1,2));
-    addItem(new bounceItem(60,100, 50,50, 2,-3));
+    addItem(new bounceItem(10,10, 70,70, 1,2));
+    addItem(new bounceItem(60,100, 80,80, 2,-3));
+    addItem(new bounceItem(400,400, 120,120, 3,1));
 }
 function addItem(newItem){
 
@@ -66,8 +69,16 @@ function itemClicked(){
 
     let item = bounceItems.items[itemIndex];
 
-    item.xMovement = -item.xMovement;
-    item.yMovement = -item.yMovement;
+    if (item.width > bounceItems.minItemSize){
+
+        let newSize = Math.floor(item.width * 3 / 4);
+
+        addItem(new bounceItem(item.x,item.y, newSize,newSize, -item.yMovement,item.xMovement));
+
+        item.xMovement = -item.xMovement;
+        item.width = newSize;
+        item.height = newSize;
+    }
 }
 
 function drawItems(){
