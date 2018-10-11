@@ -38,26 +38,26 @@ function setupItems(){
 
     let area = document.getElementById("displayArea");
 
-    area.innerHTML = ""
-
     addItem(new bounceItem(10,10, 40,40, 1,1));
     addItem(new bounceItem(60,100, 50,50, 1,-1));
 }
 function addItem(newItem){
 
-    //TODO fix this 
+    //TODO
+    //will want to setup a better way then just lineing up the array with the elements
+        //Possible improvement is to make an object where the items key match the html elements id
 
-    //will want to change these numbers to less arbitrary
     bounceItems.items.push(newItem);
 
-    //this assignment is not the best
     let indexId = bounceItems.items.length - 1;
     
-    //will want to setup a better way then just lineing up the array with the elements
-        //for one probably will want to change to using create element and append functions
-    let area = document.getElementById("displayArea");
-    area.innerHTML += "<div class=\"aBlob\" value=\""+indexId+"\" id=\"item"+indexId+"\">Test</div>";
+    let htmlElement = document.createElement("button");
 
+    htmlElement.className = "aBlob";
+    htmlElement.value = indexId;
+    htmlElement.id = "item" + indexId;
+
+    document.getElementById("displayArea").appendChild(htmlElement);
 }
 
 function drawItems(){
