@@ -1,0 +1,10 @@
+
+#displayArea{
+    border: solid 1px;
+    border-color: blue;
+
+    margin: auto;
+
+    width: 100px;
+    height: 100px;
+}
