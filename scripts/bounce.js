@@ -12,6 +12,9 @@ class bounceItem{
     constructor(x,y){
         this.x = x;
         this.y = y;
+
+        this.xMovement = 1;
+        this.yMovement = 1;
     }
 }
 
@@ -69,8 +72,23 @@ function drawItems(){
 function moveItems(){
     
     bounceItems.items.forEach((item) => {
-        item.x += 1;
-        item.y += 1;
+
+        if(item.x > bounceItems.width){
+            item.xMovement = -1;
+        }
+        else if(item.x < 0){
+            item.xMovement = 1;
+        }
+        
+        if(item.y > bounceItems.height){
+            item.yMovement = -1;
+        }
+        else if(item.y < 0){
+            item.yMovement = 1;
+        }
+
+        item.x += item.xMovement;
+        item.y += item.yMovement;
     });
 
     drawItems();
