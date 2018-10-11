@@ -44,9 +44,11 @@ function setupItems(){
 
     let area = document.getElementById("displayArea");
 
-    addItem(new bounceItem(10,10, 70,70, 1,2));
-    addItem(new bounceItem(60,100, 80,80, 2,-3));
-    addItem(new bounceItem(400,400, 120,120, 3,1));
+    let reference = (bounceItems.height < bounceItems.width) ? bounceItems.height : bounceItems.width;
+
+    addItem(new bounceItem(10,10, (reference/7),(reference/7), 1,2));
+    addItem(new bounceItem(60,100, (reference/6),(reference/6), 2,-3));
+    addItem(new bounceItem(400,400, (reference/5),(reference/5), 3,1));
 }
 function addItem(newItem){
 
