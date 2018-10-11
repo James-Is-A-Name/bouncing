@@ -32,29 +32,48 @@ function setupItems(){
 
     let area = document.getElementById("displayArea");
 
+    //TODO FIX HOW THIS IS DONE
+
+    area.innerHTML = ""
+
     //will want to change these numbers to less arbitrary
     bounceItems.items.push(new bounceItem(10,10));
 
     //this assignment is not the best
-    let indexId = bounceItems.items.length;
+    let indexId = bounceItems.items.length - 1;
 
-    area.innerHTML = "<div class=\"aBlob\" id=\"item"+(indexId-1)+"\">Test</div>";
+    //will want to setup a better way then just lineing up the array with the elements
+    area.innerHTML += "<div class=\"aBlob\" value=\""+indexId+"\" id=\"item"+indexId+"\">Test</div>";
+
+    
+    //repeat of the above for inital testing
+    bounceItems.items.push(new bounceItem(50,50));
+    indexId = bounceItems.items.length - 1;
+    area.innerHTML += "<div class=\"aBlob\" value=\""+indexId+"\" id=\"item"+indexId+"\">Test</div>";
 }
 
 function drawItems(){
 
-    //will take on some of what is being done in moveItems
+    let theItems = Array.from(document.getElementsByClassName("aBlob"));
+
+    theItems.forEach((htmlItem) => {
+
+        //I feel i have done something wrong since i need to use value twice
+        let index = htmlItem.attributes.value.value;
+
+        htmlItem.style.left = bounceItems.items[index].x + "px";
+        htmlItem.style.top = bounceItems.items[index].y + "px";
+    });
 }
 
 function moveItems(){
-
-    let theItem = document.getElementById("item0");
     
-    bounceItems.items[0].x += 1;
-    bounceItems.items[0].y += 1;
+    bounceItems.items.forEach((item) => {
+        item.x += 1;
+        item.y += 1;
+    });
 
-    theItem.style.left = bounceItems.items[0].x + "px";
-    theItem.style.top = bounceItems.items[0].y + "px";
+    drawItems();
 
     setTimeout("moveItems()",30);
 }
