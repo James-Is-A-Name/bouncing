@@ -78,6 +78,8 @@ function itemClicked(){
         item.xMovement = -item.xMovement;
         item.width = newSize;
         item.height = newSize;
+
+        document.getElementById('blop').play();
     }
 }
 
