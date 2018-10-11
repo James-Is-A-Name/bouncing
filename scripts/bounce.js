@@ -26,6 +26,10 @@ class bounceItem{
 function startBounce(){
     let area = document.getElementById("displayArea");
 
+    //have item resized to fit screen
+    bounceItems.width = document.documentElement.clientWidth - 20;
+    bounceItems.height = document.documentElement.clientHeight - 20;
+
     area.style.height = bounceItems.height+"px";
     area.style.width = bounceItems.width+"px";
 
