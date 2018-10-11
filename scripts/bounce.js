@@ -14,11 +14,20 @@ function startBounce(){
     area.style.width = bounceItems.width+"px";
 
     drawItems();
+    moveItem();
 }
 
 
 function drawItems(){
     let area = document.getElementById("displayArea");
 
-    area.innerHTML = "<div class=\"aBlob\">Test</div>";
+    area.innerHTML = "<div class=\"aBlob\" id=\"item1\">Test</div>";
+}
+
+function moveItem(){
+    let theItem = document.getElementById("item1");
+
+    theItem.style.left = "10px";
+    theItem.style.top = "10px";
+
 }
