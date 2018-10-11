@@ -13,5 +13,12 @@ function startBounce(){
     area.style.height = bounceItems.height+"px";
     area.style.width = bounceItems.width+"px";
 
-    
+    drawItems();
+}
+
+
+function drawItems(){
+    let area = document.getElementById("displayArea");
+
+    area.innerHTML = "<div class=\"aBlob\">Test</div>";
 }
